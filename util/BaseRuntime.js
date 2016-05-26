@@ -33,9 +33,10 @@ class BaseRuntime {
         catch (e) {}
         this.fileDB = new FileDB(baseDir + '/' + dbDir + '/db.json');
         this.fileDB.setGlobal('DB');
+        this.fileDB.startWatch();
         setInterval(() => {
             this.fileDB.save();
-        }, 10000);
+        }, 10*60000);
 
         if (!DB.launchNum)
             DB.launchNum = 0;
@@ -45,6 +46,10 @@ class BaseRuntime {
 
         process.on("SIGINT", function () {
             self.exitHandler('Ctrl+C pressed');
+        });
+        process.on("exit", function (code) {
+            if(code!=0)
+                self.exitHandler('Произошла неведомая хуйня, но вот её код: '+code);
         });
     }
     exitHandler(reason) {

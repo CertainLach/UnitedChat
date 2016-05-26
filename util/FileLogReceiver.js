@@ -13,6 +13,8 @@ class FileLogReceiver extends BaseLogReceiver {
         if (!baseDir)
             baseDir = __dirname;
         super(logger);
+        this.logger=new Logger('FileLog');
+        this.logger.log('File log receiver started!');
         this.date = new Date();
         let finLogDir=baseDir + '/' + logDir;
         try {

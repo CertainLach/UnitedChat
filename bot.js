@@ -9,4 +9,4 @@ class BotRuntime extends BaseRuntime {
     }
 }
 
-new BotRuntime('logs', 'BOT', __dirname, 'data');
+new BotRuntime('logs', 'GlaDOS', __dirname, 'data');
