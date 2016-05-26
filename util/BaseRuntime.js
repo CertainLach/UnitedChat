@@ -49,7 +49,7 @@ class BaseRuntime {
         });
         process.on("exit", function (code) {
             if(code!=0)
-                self.exitHandler('Произошла неведомая хуйня, но вот её код: '+code);
+                self.exitHandler('Something happened, code is: '+code);
         });
     }
     exitHandler(reason) {
